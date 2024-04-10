@@ -1,0 +1,158 @@
+/* importacion de tipo de letra */
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+/* Selector universal  */
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: "Lato" , sans-serif;
+    background-color: #333;
+    color: #222;
+    margin: 0;
+    overflow-x: hidden ;
+}
+
+/* container general es la parte donde esta el circulo y sus botones */
+.container{
+    background-color: #fafafa;
+    transform-origin: top left;
+    transition: transform 0.5s linear;
+    width: 100vw;
+    min-height: 100vw;
+    padding: 50px;
+}
+
+/* show  nav es cuando al hacer click al container el navegador se extienda */
+.container.show-nav {
+    transform: rotate(-20deg);
+}
+
+/* circulo y su contenido */
+.circle-container { 
+    position: fixed;
+    top: -100px;
+    left: -100px;
+}
+
+/* solo el circulo */
+.circle {
+    background-color: #ff7979;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.5s linear;
+}
+
+/* configurarm el circulo despues de evento show-nav */
+.container.show-nav .circle{
+    transform: rotate(-70deg);
+}
+
+/* para los botones del circulo */
+.circle button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    background: transparent;
+    border: 0;
+    font-size: 26px;
+    color: #fff;
+}
+
+/* al enfocar los botones del circulo */
+.circle button:focus {
+    outline: none;
+}
+
+/* posicion del boton open */
+.circle button#open {
+    left: 60%;
+}
+
+/* posicion y transform del boton close */
+.circle button#close {
+    top: 60%;
+    transform:  rotate(90deg);
+    transform-origin: top left;
+}
+
+/* al momento de hacer show al navegador , el navegador del listado tambien se transforma de posicion  */
+.container.show-nav + nav li {
+    transform: translateX(0);
+    transition-delay: 0.3s;
+}
+
+/* selector nav - de abajo(posicion )  */
+nav {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    z-index: 100;
+}
+
+/* posicion y separacion del listado general*/
+nav ul {
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+/* mayusculas ,posici0n. color y transformacion y transicion de todos en la lista*/
+nav ul li {
+    text-transform: uppercase;
+    color: #fff;
+    margin: 40px 0;
+    transform: translateX(-100%);
+    transition: transform 0,4s ease-in;
+}
+
+/* tamanho e margin de los iconos */
+nav ul li i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+/* al navegar el primero de la lista luego del siguiente */
+nav ul li + li  {
+    margin-left: 15px;
+    transform: translate(-150%);
+}
+
+/* posicion despuies de nav del siguiente del siguiente de la lista, para haceer en forma escalonada */
+nav ul li + li + li {
+    margin-left: 30px;
+    transform: translate(-200%);
+}
+
+/* contencion de la imagen que se vea en la pantalla exacta */
+.content img{
+    max-width: 100%;
+}
+
+/* contencion del texto general hasta un max-width y con margin */
+.content {
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+/* Content do titulo */
+.content h1 {
+    margin: 0;
+}
+
+/* content do small */
+.content small {
+    color: #555;
+    font-style: italic;
+}
+
+/* content do paragrafos */
+.content p {
+    color: #333;
+    line-height: 1.5;
+}
