@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+
+*{
+    box-sizing: border-box;
+}
+/* body solo iran los botones e imagenes */
+body{
+    font-family: "Roboto" , sans-serif;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden ;
+}
+/* la fuente de h1 colocando la posicion y transform es para cuando se expanda se traslade al medio */
+/* white-space es para que el texto se mantenga en una sola linea */
+
+h1{
+    font-size: 65px;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+/* alineamos el boton y el color , borde tamanho , y de la fuente, alineamiento */
+/* uppercase es para mayuscula siempre */
+/* transform tambien es para que se vaya alcentro cuando se le enfoque */
+.btn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    color: white;
+    border: white solid 2px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 250px;
+    padding: 25px;
+}
+
+/* aplicamos los colores para cuando el boton se activa al pasar el cursor */
+.split.left .btn:hover {
+    background-color: rgba(87, 84, 236, 1) ;
+    border-color: rgba(87, 84, 236, 1);
+}
+
+.split.right .btn:hover {
+    background-color:  rgba(28, 122, 28, 1);
+    border-color: rgba(28, 122, 28, 1);
+}
+
+/* container solo es en general para los dos lados */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #535353;
+}
+
+/* split es para los dos lados ancho de 50% para que se divida y overflow oculto para que no muestre la barra de deslizamiento */
+.split {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* posicion izquierda sin margenes de la imagen  */
+.split.left {
+    left: 0;
+    background: url('ps.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* content es solo para un estilo generado nuevo , se usa solo cuando hay after y before */
+/* este esplit es para before(antes) de generar la animacion */
+.split.left::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(87, 84, 236, 0.7);
+}
+
+
+.split.right {
+    right: 0;
+    background: url('xbox.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* content es solo para un estilo generado nuevo , se usa solo cuando hay after y before */
+/* este esplit es para before(antes) de generar la animacion */
+.split.right::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(43, 43, 43, 0.7);
+}
+
+/* cuando coloquemos el cursor en el split izquierdo(hover-left) el tamanho del split izquierdo aumenta a 75% y el derecho se reduce a 25% */
+.hover-left .left {
+    width: 75%;
+}
+
+.hover-left .right{
+    width: 25%;
+}
+
+/* aqui es cuando enfocas el lado derecho(hover-right) , el lado recho se extiende a 75% y el lado izquierdo se reduce a 25% */
+.hover-right .right {
+    width: 75%;
+}
+
+.hover-right .left{
+    width: 25%;
+}
+
+/* esto es para que los splits derecho e izquierdo de antes y despues tengan una transicion de cierre o abertura */
+/* ease es simple */
+/* ease-in-out es al principio rapido luego lento */
+.split.left, 
+.split.right,
+.split.left::before,
+.split.right::before {
+    transition: 1000ms ease-in-out;
+}
+
+/* esto es para pantallas pequenas */
+@media(max-width: 800px) {
+    h1 {
+        font-size: 32px;
+        top: 30%;
+    }
+
+    .btn {
+        padding: 20px;
+        width: 170px;
+    }
+}
